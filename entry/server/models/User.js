@@ -10,8 +10,10 @@ let userSchema = new Schema({
         type: String,
         required: true
     },
-    profile:{
-    }
+    birthControl :{},
+    periodTracker:{},
+    mentalHealth:{},
+    reproductiveHealth:{}
 },{
     timestamps: true,
     collection: 'users'
