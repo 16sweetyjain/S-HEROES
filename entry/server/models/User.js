@@ -13,7 +13,8 @@ let userSchema = new Schema({
     birthControl :{},
     periodTracker:{},
     mentalHealth:{},
-    reproductiveHealth:{}
+    reproductiveHealth:{},
+    profile:{}
 },{
     timestamps: true,
     collection: 'users'
