@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import setUserEmail from '../actions/setUserEmail';
-import auth from '../ProtectedRoute/auth';
+import auth from '../Auth';
 
 export default function Signin() {
 

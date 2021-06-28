@@ -1,7 +1,7 @@
 import { React } from 'react';
 import { Route } from 'react-router-dom';
-import auth from './Auth.js';
-import ErrorPage from './ErrorPage.js';
+import auth from './Auth';
+import ErrorPage from './ErrorPage';
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     return(
