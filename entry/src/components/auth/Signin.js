@@ -18,7 +18,7 @@ export default function Signin() {
             email:user.email,
             password:user.password,
         };
-        axios.post('api/signin',userDetails)
+        axios.post('/signin',userDetails)
             .then((response) => {
                 console.log(response);
                 console.log('user:',user);
@@ -47,13 +47,13 @@ export default function Signin() {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="input-field col s12 center-align black-text">
+                            <div className="input-field col s12 center-align ">
                                 <input id="email" type="email" className="validate" value={ user.email } onChange={ onChangeHandler }/>
                                 <label> <b>Email</b> </label>
                             </div>
                         </div>
                         <div className="row">
-                            <div className="input-field col s12 center-align black-text">
+                            <div className="input-field col s12 center-align ">
                                 <input id="password" type="password" className="validate" value={ user.password } onChange={ onChangeHandler }/>
                                 <label> <b>Password</b> </label>
                             </div>

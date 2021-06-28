@@ -19,7 +19,7 @@ export default function Signup() {
             password:user.password,
             passwordConfirmation:user.passwordConfirmation
         };
-        axios.post('api/signup',newUser)
+        axios.post('/signup',newUser)
             .then((response) => {
                 console.log(response);
                 history.push('/signin');

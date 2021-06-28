@@ -9,7 +9,7 @@ const { reproductiveHealth } = require('../controllers/reproductiveHealth');
 
 router.post('/signup', signup);
 router.post('/signin', signin);
-router.put('/periodTracker',periodTracker);
+router.post('/periodTracker',periodTracker);
 router.put('/birthControl',birthControl);
 router.put('/mentalHealth',mentalHealth);
 router.put('/reproductiveHealth',reproductiveHealth);

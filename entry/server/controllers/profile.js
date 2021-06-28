@@ -13,7 +13,7 @@ exports.profile = (req,res) => {
         .then(response => {
             console.log(response);
             res.status(200).json({
-                success:'updated',
+                success:' profile updated',
                 result:response
             });
         })

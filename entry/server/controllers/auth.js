@@ -23,7 +23,7 @@ exports.signup = (req, res) => {
             error : 'password confirmation required',
         });
     }
-    if (password != passwordConfirmation) {
+    if (password !== passwordConfirmation) {
         errors.push({ error: ' Passwords do not match' });
     }
     if (errors.length > 0) {

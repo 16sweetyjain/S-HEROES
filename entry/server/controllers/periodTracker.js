@@ -1,12 +1,16 @@
 const User = require('../models/User');
 
 exports.periodTracker = (req,res) => {
-    let { email, cycleLength, periodLength, lastDateOfPeriod } = req.body; 
+    let { email, menstrualCycleLength, menstrualLength, lastMenstrualDate, expectedOvulationDate, expectedMenstrualDate, expectedFertileDays } = req.body; 
     const periodTracker = {
-        cycleLength:cycleLength,
-        periodLength:periodLength,
-        lastDateOfPeriod:lastDateOfPeriod
+        menstrualCycleLength:menstrualCycleLength,
+        menstrualLength:menstrualLength,
+        lastMenstrualDate:lastMenstrualDate,
+        expectedOvulationDate:expectedOvulationDate,
+        expectedMenstrualDate:expectedMenstrualDate,
+        expectedFertileDays:expectedFertileDays
     };
+    console.log(periodTracker);
 
     User.findOneAndUpdate({ email:email },{ $set:{ periodTracker:periodTracker } }, { new: true })
         .then(response => {
