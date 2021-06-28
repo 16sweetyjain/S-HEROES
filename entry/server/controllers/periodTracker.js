@@ -2,6 +2,20 @@ const User = require('../models/User');
 
 exports.periodTracker = (req,res) => {
     let { email, menstrualCycleLength, menstrualLength, lastMenstrualDate, expectedOvulationDate, expectedMenstrualDate, expectedFertileDays } = req.body; 
+    let errors = [];
+    if (!menstrualCycleLength) {
+        errors.push({ error: 'Menstrual Cycle Length required' });
+    }
+    if (!menstrualLength) {
+        errors.push({ error: 'Menstrual Length required' });
+    }
+    if (!lastMenstrualDate) {
+        errors.push({ error: 'Last Menstrual Date required ' });
+    }
+    if (errors.length > 0) {
+        return res.status(422).json({ errors: errors });
+    }
+
     const periodTracker = {
         menstrualCycleLength:menstrualCycleLength,
         menstrualLength:menstrualLength,

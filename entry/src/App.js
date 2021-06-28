@@ -6,6 +6,12 @@ import Signup from './components/auth/Signup.js';
 import Dashboard from './components/Dashboard';
 import HomePage from './components/HomePage';
 import PeriodTracker from './components/features/PeriodTracker';
+import ReproductiveHealth from './components/features/ReproductiveHealth';
+import Awareness from './components/features/Awareness';
+import BirthControl from './components/features/BirthControl';
+import MentalHealth from './components/features/MentalHealth';
+import Reports from './components/features/Reports';
+import Profile from './components/Profile';
 
 export default function App () {
    
@@ -17,6 +23,12 @@ export default function App () {
                 <Route  path='/signup' component={() => <Signup />}/>
                 <Route path='/dashboard' component={() => <Dashboard/>}/>
                 <Route path = '/periodTracker' component = {() => <PeriodTracker/>}/>
+                <Route path = '/reproductiveHealth' component = {() => <ReproductiveHealth/>}/>
+                <Route path = '/mentalHealth' component = {() => <MentalHealth/>}/>
+                <Route path = '/birthControl' component = {() => <BirthControl/>}/>
+                <Route path = '/reports' component = {() => <Reports/>}/>
+                <Route path = '/awareness' component = {() => <Awareness/>}/>
+                <Route path = '/profile' component = {() => <Profile/>}/>
             </Switch>
         </div>
     );

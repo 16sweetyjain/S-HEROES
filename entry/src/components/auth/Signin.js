@@ -3,9 +3,13 @@ import axios from 'axios';
 import { ToastContainer,toast  } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import setUserEmail from '../actions/setUserEmail';
+import auth from '../ProtectedRoute/auth';
 
 export default function Signin() {
 
+    const dispatch = useDispatch();
     const history = useHistory();
     const [user, setUserDetails] = useState({
         email:'',
@@ -21,9 +25,16 @@ export default function Signin() {
         axios.post('/signin',userDetails)
             .then((response) => {
                 console.log(response);
-                console.log('user:',user);
                 console.log('login success');
-                history.push('/dashboard');
+                dispatch(setUserEmail(user.email));
+                auth.signin(() => {
+                    if(Object.prototype.hasOwnProperty.call(response.data.message,'profile')){
+                        history.push('/dashboard');   
+                    }
+                    else{
+                        history.push('/profile');
+                    }
+                });
             })
             .catch((error) => {
                 let errorMessage = error.response.data.errors;

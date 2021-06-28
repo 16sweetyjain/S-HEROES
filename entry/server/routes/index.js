@@ -6,13 +6,16 @@ const { periodTracker } = require('../controllers/periodTracker');
 const { birthControl } = require('../controllers/birthControl');
 const { mentalHealth } = require('../controllers/mentalHealth');
 const { reproductiveHealth } = require('../controllers/reproductiveHealth');
+const { profile } = require('../controllers/profile');
 
 router.post('/signup', signup);
 router.post('/signin', signin);
 router.post('/periodTracker',periodTracker);
-router.put('/birthControl',birthControl);
-router.put('/mentalHealth',mentalHealth);
-router.put('/reproductiveHealth',reproductiveHealth);
+router.post('/birthControl',birthControl);
+router.post('/mentalHealth',mentalHealth);
+router.post('/reproductiveHealth',reproductiveHealth);
+router.post('/profile',profile);
+
 
 
 module.exports = router;
