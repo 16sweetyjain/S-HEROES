@@ -8,13 +8,16 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import {TextField} from '@material-ui/core';
+import { TextField } from '@material-ui/core';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
-export default function card1(props){
+export default function card2(props){
     const classes = makeStyles();
  
-  
-
     return(
         <div className='container'  >
             <div className='row'>
@@ -30,29 +33,25 @@ export default function card1(props){
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-          Enter your last date of period
+          Are you willing to use a method that you have to put into your vagina?
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-      <TextField
-    id="lastMenstrualDate"
-    label=""
-    type="date"
-    className={classes.textField}
-    value ={props.lastMenstrualDate}
-    onChange={props.handleChange}
-  />
-
+      <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
+      <FormControl component="fieldset">
+  <RadioGroup row  value={props.vaginalMethod} onChange={props.handleChange}>
+    <FormControlLabel value="Yes" control={<Radio />} label="YES" />
+    <FormControlLabel value="No" control={<Radio />} label="NO" />
+  </RadioGroup>
+</FormControl>
          <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
       </CardActions>
     </Card>
+    <Button style={{ marginTop:'50px'}} variant="contained" color="primary" onClick={props.onSubmit}>Submit</Button>
     </Grid>
             </div>
         </div>
         
-    )
-
-
-
+    );
 }
