@@ -15,7 +15,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-export default function card2(props){
+export default function Card6(props){
     const classes = makeStyles();
  
     return(
@@ -33,14 +33,14 @@ export default function card2(props){
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-          Are you willing to use a method that has hormones?
+         Do you overthink?
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
       <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
       <FormControl component="fieldset">
-  <RadioGroup row name="hormonalMethod" value={props.hormonalMethod} onChange={props.handleChange}>
+  <RadioGroup row name='overthinking' value={props.overthinking} onChange={props.handleChange}>
     <FormControlLabel value="Yes" control={<Radio />} label="YES" />
     <FormControlLabel value="No" control={<Radio />} label="NO" />
   </RadioGroup>

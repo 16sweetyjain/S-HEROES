@@ -39,10 +39,10 @@ export default function card2(props){
       </CardActionArea>
       <CardActions>
       <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
-      <FormControl component="fieldset">
-  <RadioGroup row  value={props.vaginalMethod} onChange={props.handleChange}>
+      <FormControl component="fieldset" >
+  <RadioGroup row name='vaginalMethod'  value={props.vaginalMethod} onChange={props.handleChange}>
     <FormControlLabel value="Yes" control={<Radio />} label="YES" />
-    <FormControlLabel value="No" control={<Radio />} label="NO" />
+    <FormControlLabel  value="No" control={<Radio />} label="NO" />
   </RadioGroup>
 </FormControl>
          <i class="material-icons" onClick={props.nextStep}>chevron_right</i>

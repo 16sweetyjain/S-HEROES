@@ -15,7 +15,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-export default function card2(props){
+export default function Card12(props){
     const classes = makeStyles();
  
     return(
@@ -33,21 +33,23 @@ export default function card2(props){
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-          Are you willing to use a method that has hormones?
+          Do you have any emotional or behavioral problems for which you need help? 
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
       <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
-      <FormControl component="fieldset">
-  <RadioGroup row name="hormonalMethod" value={props.hormonalMethod} onChange={props.handleChange}>
-    <FormControlLabel value="Yes" control={<Radio />} label="YES" />
-    <FormControlLabel value="No" control={<Radio />} label="NO" />
-  </RadioGroup>
-</FormControl>
-         <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
+      <TextField
+      id="otherProblems"
+  multiline
+  rows={2}
+  cols={12}
+  value={props.otherProblems}
+  onChange={props.handleChange}
+/>
       </CardActions>
     </Card>
+    <Button style={{ marginTop:'50px'}} variant="contained" color="primary" onClick={props.onSubmit}>Submit</Button>
     </Grid>
             </div>
         </div>

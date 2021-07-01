@@ -15,23 +15,15 @@ export default function BirthControl(){
         vaginalMethod:''
     });
 
-    const [impArray,setArray]=useState([]);
-
     const handleChange = (e) => {
         e.preventDefault();
         console.log(e.target.value);
-        //setArray([...impArray, e.target.value]);
         setBirthControlDetails({ ...birthControlDetails, important:e.target.value});
     }
 
-    const handleHormonalMethodChange = (e)=>{
-     e.preventDefault();
-     setBirthControlDetails({...birthControlDetails,hormonalMethod:e.target.value});
- }
-
- const handleVaginalMethodChange = (e)=>{
+ const handleMethodChange = (e)=>{
     e.preventDefault();
-    setBirthControlDetails({...birthControlDetails,vaginalMethod:e.target.value});
+    setBirthControlDetails({...birthControlDetails,[e.target.name]:e.target.value});
 }
     const nextStep = () => {
        setState(prevState => prevState+1);
@@ -71,14 +63,14 @@ export default function BirthControl(){
                 return <Card2
                         nextStep={nextStep}
                         prevStep={prevStep}
-                        handleChange={handleHormonalMethodChange}
+                        handleChange={handleMethodChange}
                         hormonalMethod={birthControlDetails.hormonalMethod}
                         />
             case 3:
                 return <Card3
                         nextStep={nextStep}
                         prevStep={prevStep}
-                        handleChange={handleVaginalMethodChange}
+                        handleChange={handleMethodChange}
                         onSubmit={onSubmit}
                         vaginalMethod={birthControlDetails.vaginalMethod}
                         />
