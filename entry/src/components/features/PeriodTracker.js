@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import Card1 from './Cards/PeriodTracker/card1';
+import Card2 from './Cards/PeriodTracker/card2';
+import Card3 from './Cards/PeriodTracker/card3';
 
 export default function PeriodTracker(){
 
     const userEmail = useSelector( state => state.userEmail.email);
+    const [step,setState] = useState(1);
     const [periodDetails,setPeriodDetails] = useState({
         lastMenstrualDate:'',
         menstrualLength:'',
@@ -14,6 +18,14 @@ export default function PeriodTracker(){
     const handleChange = (e) => {
         e.preventDefault();
         setPeriodDetails({ ...periodDetails, [e.target.id]:e.target.value});
+    }
+
+    const nextStep = () => {
+       setState(prevState => prevState+1);
+    }
+
+    const prevStep = () => {
+        setState(prevState => prevState-1);
     }
 
     const onSubmit = e =>{
@@ -44,39 +56,30 @@ export default function PeriodTracker(){
         });
     }
 
-    return (
-        <div className='container'>
-            <div className='row'>
-                <form className="col s12">
-                            <div className='row'>
-                                <div className="input-field col s12">
-                                    <i className="small material-icons prefix">date_range</i>
-                                    <input  id ="lastMenstrualDate" type='text' value={periodDetails.lastDateOfPeriod} onChange={handleChange}/>
-                                    <label>Enter period date of last month</label>
-                                </div>
-                            </div>
-                            <div className='row'>
-                                <div className="input-field col s12">
-                                    <i className="small material-icons prefix">date_range</i>
-                                    <input  id ="menstrualLength" type='text' value={periodDetails.periodLength} onChange={handleChange}/>
-                                    <label>Enter period length</label>
-                                </div>
-                            </div>
-                            <div className='row'>
-                                <div className="input-field col s12">
-                                    <i className="small material-icons prefix">date_range</i>
-                                    <input  id ="menstrualCycleLength" type='text' value={periodDetails.cycleLength} onChange={handleChange}/>
-                                    <label>Enter cycle length</label>
-                                </div>
-                            </div>
-                            <div className="row">
-                            <div className="input-field col s12" style = { { textAlign:'center' } }>
-                                <button style={ { width: '100px', borderRadius: '3px', letterSpacing: '1.5px' } } className="btn btn-large btn-dark" onClick={ onSubmit }>Track period date of next month</button>
-                            </div>
-                        </div>
-                </form>
-                </div>
-                
-                </div>            
-    );
-}
+    console.log(periodDetails);
+
+    switch(step) {
+            case 1:
+                return <Card1
+                        nextStep={nextStep}
+                        handleChange={handleChange}
+                        lastMenstrualDate={periodDetails.lastMenstrualDate}
+                        />
+            case 2:
+                return <Card2
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                        handleChange={handleChange}
+                        menstrualLength={periodDetails.menstrualLength}
+                        />
+            case 3:
+                return <Card3
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                        handleChange={handleChange}
+                        onSubmit={onSubmit}
+                        menstrualCycleLength={periodDetails.menstrualCycleLength}
+                        />
+            }
+        };
+      
