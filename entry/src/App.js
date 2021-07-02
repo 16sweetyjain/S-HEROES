@@ -13,6 +13,8 @@ import MentalHealth from './components/features/MentalHealth';
 import Reports from './components/features/Reports';
 import Profile from './components/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
+import MenstrualCondition from './components/features/MenstrualCondition';
+import MenstrualAnalysis from './components/features/MenstrualAnalysis';
 
 export default function App() {
 
@@ -30,6 +32,8 @@ export default function App() {
                 <ProtectedRoute path='/reports' component={() => <Reports />} />
                 <ProtectedRoute path='/awareness' component={() => <Awareness />} />
                 <ProtectedRoute path='/profile' component={() => <Profile />} />
+                <ProtectedRoute path='/menstrualCondition'  component={()=> <MenstrualCondition/>}/>
+                <ProtectedRoute path='/menstrualAnalysis'  component={()=> <MenstrualAnalysis/>}/>
             </Switch>
         </div>
     );

@@ -14,7 +14,8 @@ let userSchema = new Schema({
     periodTracker:{},
     mentalHealth:{},
     reproductiveHealth:{},
-    profile:{}
+    profile:{},
+    menstrualCondition:{}
 },{
     timestamps: true,
     collection: 'users'

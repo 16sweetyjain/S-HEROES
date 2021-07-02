@@ -8,7 +8,7 @@ export default function Dashboard() {
             Welcome
             <div className='row'>
                 <div className='col s4'>
-                    <Link to='/periodTracker'>Period Tracker</Link>
+                    <Link to='/menstrualAnalysis'>Menstrual Analysis</Link>
                 </div>
                 <div className='col s4'>
                 <Link to='/reproductiveHealth'>Reproductive Health</Link>
