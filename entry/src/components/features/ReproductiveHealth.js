@@ -9,8 +9,6 @@ import Card5 from './Cards/ReproductiveHealth/card5';
 import Card6 from './Cards/ReproductiveHealth/card6';
 import Card7 from './Cards/ReproductiveHealth/card7';
 import Card8 from './Cards/ReproductiveHealth/card8';
-import Card9 from './Cards/ReproductiveHealth/card9';
-
 
 export default function ReproductiveHealth() {
 
@@ -18,7 +16,6 @@ export default function ReproductiveHealth() {
     const [step, setState] = useState(1);
     const [reproductiveHealthDetails, setReproductiveHealthDetails] = useState({
         sexLife: '',
-        menstrualCondition: '',
         symptoms: [],
         densityOfBodyHairs: '',
         exercise: '',
@@ -27,6 +24,7 @@ export default function ReproductiveHealth() {
         smoking: '',
         drugUsage: ''
     });
+
 
     const handleChangeSymptoms = (e) => {
         e.preventDefault();
@@ -46,6 +44,8 @@ export default function ReproductiveHealth() {
     const nextStep = () => {
         setState(prevState => prevState + 1);
     }
+
+
 
     const prevStep = () => {
         setState(prevState => prevState - 1);
@@ -82,7 +82,7 @@ export default function ReproductiveHealth() {
             return <Card1
                 nextStep={nextStep}
                 handleChange={handleChange}
-                sexLife={reproductiveHealthDetails.asexLife}
+                sexLife={reproductiveHealthDetails.sexLife}
             />
         case 2:
             return <Card2
@@ -134,16 +134,5 @@ export default function ReproductiveHealth() {
                 handleChange={handleChange}
                 drugUsage={reproductiveHealthDetails.drugUsage}
             />
-        case 9:
-            return <Card9
-                prevStep={prevStep}
-                handleChange={handleChange}
-                menstrualCondition={reproductiveHealthDetails.menstrualCondition}
-                onSubmit={onSubmit}
-            />
-
-
-
-
     }
 };

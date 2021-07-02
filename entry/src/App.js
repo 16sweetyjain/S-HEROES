@@ -14,22 +14,22 @@ import Reports from './components/features/Reports';
 import Profile from './components/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 
-export default function App () {
-   
+export default function App() {
+
     return (
         <div>
             <Switch>
-                <Route exact path ='/' component = {() => <HomePage/>}/>
-                <Route  path='/signin' component={() => <Signin />}/>
-                <Route  path='/signup' component={() => <Signup />}/>
-                <ProtectedRoute path='/dashboard' component={() => <Dashboard/>}/>
-                <ProtectedRoute path = '/periodTracker' component = {() => <PeriodTracker/>}/>
-                <ProtectedRoute path = '/reproductiveHealth' component = {() => <ReproductiveHealth/>}/>
-                <ProtectedRoute path = '/mentalHealth' component = {() => <MentalHealth/>}/>
-                <ProtectedRoute path = '/birthControl' component = {() => <BirthControl/>}/>
-                <ProtectedRoute path = '/reports' component = {() => <Reports/>}/>
-                <ProtectedRoute path = '/awareness' component = {() => <Awareness/>}/>
-                <ProtectedRoute path = '/profile' component = {() => <Profile/>}/>
+                <Route exact path='/' component={() => <HomePage />} />
+                <Route path='/signin' component={() => <Signin />} />
+                <Route path='/signup' component={() => <Signup />} />
+                <ProtectedRoute path='/dashboard' component={() => <Dashboard />} />
+                <ProtectedRoute path='/periodTracker' component={() => <PeriodTracker />} />
+                <ProtectedRoute path='/reproductiveHealth' component={() => <ReproductiveHealth />} />
+                <ProtectedRoute path='/mentalHealth' component={() => <MentalHealth />} />
+                <ProtectedRoute path='/birthControl' component={() => <BirthControl />} />
+                <ProtectedRoute path='/reports' component={() => <Reports />} />
+                <ProtectedRoute path='/awareness' component={() => <Awareness />} />
+                <ProtectedRoute path='/profile' component={() => <Profile />} />
             </Switch>
         </div>
     );
