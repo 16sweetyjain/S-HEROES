@@ -15,43 +15,44 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-export default function Card4(props){
-    const classes = makeStyles();
- 
-    return(
-        <div className='container'  >
-            <div className='row'>
-            <Grid
-    container
-    spacing={0}
-    direction="column"
-    alignItems="center"
-    justify="center"
-    style={{ minHeight: '100vh' }}
-   >
-            <Card className={classes.root}>
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-          Density of body(chest, stomach, back) hairs
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-      <FormControl component="fieldset">
-  <RadioGroup name = 'densityOfBodyHairs'row  value={props.densityOfBodyHairs} onChange={props.handleChange}>
-    <FormControlLabel value="low" control={<Radio />} label="low" />
-    <FormControlLabel value="moderate" control={<Radio />} label="moderate" />
-    <FormControlLabel value="excess" control={<Radio />} label="excess" />
-    <FormControlLabel value="normal" control={<Radio />} label="normal" />
-  </RadioGroup>
-</FormControl>
-         <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
-      </CardActions>
-    </Card>
-    </Grid>
-            </div>
-        </div>
-        
-    );
+export default function Card4(props) {
+  const classes = makeStyles();
+
+  return (
+    <div className='container'  >
+      <div className='row'>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: '100vh' }}
+        >
+          <Card className={classes.root}>
+            <CardActionArea>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Density of body hairs(chest, stomach, back)
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
+              <FormControl component="fieldset">
+                <RadioGroup name='densityOfBodyHairs' row value={props.densityOfBodyHairs} onChange={props.handleChange}>
+                  <FormControlLabel value="low" control={<Radio />} label="low" />
+                  <FormControlLabel value="moderate" control={<Radio />} label="moderate" />
+                  <FormControlLabel value="excess" control={<Radio />} label="excess" />
+                  <FormControlLabel value="normal" control={<Radio />} label="normal" />
+                </RadioGroup>
+              </FormControl>
+              <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
+            </CardActions>
+          </Card>
+        </Grid>
+      </div>
+    </div>
+
+  );
 }

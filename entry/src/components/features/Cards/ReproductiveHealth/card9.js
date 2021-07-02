@@ -14,46 +14,9 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import Slider from '@material-ui/core/Slider';
 
-
-export default function Card6(props) {
+export default function Card9(props) {
     const classes = makeStyles();
-
-    const marks = [
-        {
-            value: 0,
-            label: '0',
-        },
-        {
-            value: 1,
-            label: '1',
-        },
-        {
-            value: 2,
-            label: '2',
-        },
-        {
-            value: 3,
-            label: '3',
-        },
-        {
-            value: 4,
-            label: '4',
-        },
-        {
-            value: 5,
-            label: '5',
-        },
-        {
-            value: 6,
-            label: '6',
-        },
-        {
-            value: 7,
-            label: '7',
-        }
-    ];
 
     return (
         <div className='container'  >
@@ -70,30 +33,23 @@ export default function Card6(props) {
                         <CardActionArea>
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    How frequently do you consume alcohol?
+                                    How's sex life?
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
                             <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
-                            <Typography id="discrete-slider-small-steps" gutterBottom>
-                                number of times a week
-                            </Typography>
-                            <Slider
-                                defaultValue={0}
-                                id='alcoholConsumption'
-                                aria-labelledby="discrete-slider-small-steps"
-                                step={1}
-                                marks={marks}
-                                min={0}
-                                max={7}
-                                valueLabelDisplay="auto"
-                                value={props.alcoholConsumption}
-                                onChange={props.handleChange}
-                            />
-                            <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
+                            <FormControl component="fieldset">
+                                <RadioGroup name='sexLife' row value={props.sexLife} onChange={props.handleChange}>
+                                    <FormControlLabel value="painful" control={<Radio />} label="painful" />
+                                    <FormControlLabel value="lack of interest" control={<Radio />} label="lack of interest" />
+                                    <FormControlLabel value="unsatisfying" control={<Radio />} label="unsatisfying" />
+                                    <FormControlLabel value="normal" control={<Radio />} label="normal" />
+                                </RadioGroup>
+                            </FormControl>
                         </CardActions>
                     </Card>
+                    <Button style={{ marginTop: '50px' }} variant="contained" color="primary" onClick={props.onSubmit}>Submit</Button>
                 </Grid>
             </div>
         </div>
