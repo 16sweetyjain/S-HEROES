@@ -11,6 +11,7 @@ import CalendarCard from './Cards/PeriodTracker/CalendarCard';
 export default function PeriodTracker(){
 
     const userEmail = useSelector( state => state.userEmail.email);
+    const [fertileDays,setDays] = useState([]);
     const [step,setState] = useState(1);
     const [periodDetails,setPeriodDetails] = useState({
         lastMenstrualDate:'',
@@ -34,16 +35,12 @@ export default function PeriodTracker(){
     const onSubmit = e =>{
       //  let lastDate = periodDetails.lastMenstrualDate.substr(periodDetails.lastMenstrualDate.length - 2) ;
         let nextMenstrualExpectedDate = '';
-        let expectedOvulationDate = '';
-        var fertileDays = [];
-        let monthLength = 30;                                                                        // will be 30 or 31
+        let expectedOvulationDate = '';                                                                      // will be 30 or 31
         nextMenstrualExpectedDate = moment(periodDetails.lastMenstrualDate, "YYYY-MM-DD").add(periodDetails.menstrualCycleLength, 'days').format('YYYY-MM-DD');
         expectedOvulationDate = moment(periodDetails.lastMenstrualDate, "YYYY-MM-DD").add(periodDetails.menstrualCycleLength, 'days').subtract(14, 'days').format('YYYY-MM-DD');
-        console.log( moment(expectedOvulationDate).subtract(2, 'days').format('YYYY-MM-DD'));
-        fertileDays.push(moment(expectedOvulationDate).subtract(2, 'days').format('YYYY-MM-DD'));
-        fertileDays.push(moment(expectedOvulationDate).subtract(1, 'days').format('YYYY-MM-DD'));
-        fertileDays.push(moment(expectedOvulationDate).format('YYYY-MM-DD'));
-        console.log(fertileDays)
+        setDays(currentArray => [...currentArray,moment(expectedOvulationDate).subtract(2, 'days').format('YYYY-MM-DD'),
+        moment(expectedOvulationDate).subtract(1, 'days').format('YYYY-MM-DD'),moment(expectedOvulationDate).format('YYYY-MM-DD') ]);
+        //console.log(fertileDays)
        
         const periodTracker = {
             email:userEmail,
@@ -64,7 +61,7 @@ export default function PeriodTracker(){
         });
     }
 
-    console.log(periodDetails);
+    console.log(fertileDays);
 
     switch(step) {
             case 1:
@@ -90,6 +87,7 @@ export default function PeriodTracker(){
                         />
             case 4: 
             return <CalendarCard
+            fertileDays={fertileDays}
             />
             }
         };

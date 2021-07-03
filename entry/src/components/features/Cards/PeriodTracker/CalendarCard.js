@@ -6,6 +6,14 @@ import './CalendarCard.css';
 export default function CalendarCard(props){
 
     const [date,onChange]= useState(new Date());
+    console.log(props.fertileDays);
+
+    props.fertileDays.find(x=>{
+      if(moment(x).format("DD-MM-YYYY")===moment(date).format("DD-MM-YYYY")){
+        console.log(x);
+      }
+    });
+
 
     return (
         <Calendar
@@ -13,7 +21,7 @@ export default function CalendarCard(props){
     onChange={onChange}
     value={date}
     tileClassName={({ date, view }) => {
-      if(props.fertileDays.find(x=>x===moment(date).format("YYYY-MM-DD"))){
+      if(props.fertileDays.find(x=>moment(x).format("DD-MM-YYYY")===moment(date).format("DD-MM-YYYY"))){
        return  'highlight'
       }
     }}
