@@ -6,7 +6,7 @@ import './CalendarCard.css';
 export default function CalendarCard(props){
 
     const [date,onChange]= useState(new Date());
-    console.log(props.fertileDays);
+    //console.log(props.fertileDays);
 
     props.fertileDays.find(x=>{
       if(moment(x).format("DD-MM-YYYY")===moment(date).format("DD-MM-YYYY")){

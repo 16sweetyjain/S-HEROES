@@ -7,7 +7,7 @@ const {
 const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 exports.signup = (req, res) => {
     let { email, password, passwordConfirmation } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
     let errors = [];
     if (!email) {
         errors.push({ error: ' Email Required' });

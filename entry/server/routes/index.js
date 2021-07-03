@@ -8,6 +8,7 @@ const { mentalHealth } = require('../controllers/mentalHealth');
 const { reproductiveHealth } = require('../controllers/reproductiveHealth');
 const { profile } = require('../controllers/profile');
 const {menstrualCondition} = require('../controllers/menstrualCondition');
+const { getUser } = require('../controllers/getUser');
 
 router.post('/signup', signup);
 router.post('/signin', signin);
@@ -17,6 +18,7 @@ router.post('/mentalHealth',mentalHealth);
 router.post('/reproductiveHealth',reproductiveHealth);
 router.post('/profile',profile);
 router.post('/menstrualCondition',menstrualCondition);
+router.get('/getUser',getUser);
 
 
 

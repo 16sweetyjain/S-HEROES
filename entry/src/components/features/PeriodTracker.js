@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import Calendar from 'react-calendar'
@@ -35,12 +35,17 @@ export default function PeriodTracker(){
     const onSubmit = e =>{
       //  let lastDate = periodDetails.lastMenstrualDate.substr(periodDetails.lastMenstrualDate.length - 2) ;
         let nextMenstrualExpectedDate = '';
-        let expectedOvulationDate = '';                                                                      // will be 30 or 31
+        let expectedOvulationDate = '';    
+        let fertileDaysForCalendar = [];                                                                  // will be 30 or 31
         nextMenstrualExpectedDate = moment(periodDetails.lastMenstrualDate, "YYYY-MM-DD").add(periodDetails.menstrualCycleLength, 'days').format('YYYY-MM-DD');
         expectedOvulationDate = moment(periodDetails.lastMenstrualDate, "YYYY-MM-DD").add(periodDetails.menstrualCycleLength, 'days').subtract(14, 'days').format('YYYY-MM-DD');
         setDays(currentArray => [...currentArray,moment(expectedOvulationDate).subtract(2, 'days').format('YYYY-MM-DD'),
         moment(expectedOvulationDate).subtract(1, 'days').format('YYYY-MM-DD'),moment(expectedOvulationDate).format('YYYY-MM-DD') ]);
         //console.log(fertileDays)
+        fertileDaysForCalendar.push(moment(expectedOvulationDate).subtract(2, 'days').format('YYYY-MM-DD'));
+        fertileDaysForCalendar.push(moment(expectedOvulationDate).subtract(1, 'days').format('YYYY-MM-DD'));
+        fertileDaysForCalendar.push(moment(expectedOvulationDate).format('YYYY-MM-DD'));
+
        
         const periodTracker = {
             email:userEmail,
@@ -49,7 +54,7 @@ export default function PeriodTracker(){
             lastMenstrualDate:periodDetails.lastMenstrualDate ,
             expectedOvulationDate:expectedOvulationDate.toString(),
             expectedMenstrualDate:nextMenstrualExpectedDate.toString(),
-            expectedFertileDays:fertileDays
+            expectedFertileDays:fertileDaysForCalendar
         }
         axios.post('/periodTracker',periodTracker)
         .then((response)=>{
@@ -59,9 +64,7 @@ export default function PeriodTracker(){
         .catch((error)=>{
             console.log(error);
         });
-    }
-
-    console.log(fertileDays);
+    };
 
     switch(step) {
             case 1:
