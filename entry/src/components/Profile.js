@@ -2,10 +2,12 @@ import React, {useState }  from  'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { ToastContainer,toast  } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
 
 export default function Profile () {
 
     const userEmail = useSelector( state => state.userEmail.email);
+    const history = useHistory();
     const [profile,setUserProfile] = useState({
         name:'',age:'',height:'',weight:''
     });
@@ -29,6 +31,7 @@ export default function Profile () {
         axios.post('/profile',userProfile)
         .then((response)=>{
             console.log(response);
+            history.push('/dashboard');
         })
         .catch((error) => {
             let errorMessage = error.response.data.errors;
