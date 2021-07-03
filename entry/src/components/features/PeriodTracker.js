@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import Card1 from './Cards/PeriodTracker/card1';
 import Card2 from './Cards/PeriodTracker/card2';
 import Card3 from './Cards/PeriodTracker/card3';
+import CalendarCard from './Cards/PeriodTracker/CalendarCard';
 
 export default function PeriodTracker(){
 
@@ -34,8 +35,7 @@ export default function PeriodTracker(){
       //  let lastDate = periodDetails.lastMenstrualDate.substr(periodDetails.lastMenstrualDate.length - 2) ;
         let nextMenstrualExpectedDate = '';
         let expectedOvulationDate = '';
-        let fertileDays = '';
-        let monthLength = 30;                                                                        // will be 30 or 31
+        let fertileDays = '';                                                                       // will be 30 or 31
         nextMenstrualExpectedDate = moment(periodDetails.lastMenstrualDate, "YYYY-MM-DD").add(periodDetails.menstrualCycleLength, 'days').format('YYYY-MM-DD');
         expectedOvulationDate = moment(periodDetails.lastMenstrualDate, "YYYY-MM-DD").add(periodDetails.menstrualCycleLength, 'days').subtract(14, 'days').format('YYYY-MM-DD');
         console.log( moment(expectedOvulationDate).subtract(2, 'days').format('YYYY-MM-DD'));
@@ -85,7 +85,8 @@ export default function PeriodTracker(){
                         menstrualCycleLength={periodDetails.menstrualCycleLength}
                         />
             case 4: 
-            return <Calendar/>
+            return <CalendarCard
+            />
             }
         };
       
