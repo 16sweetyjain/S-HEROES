@@ -1,16 +1,16 @@
 const User = require('../models/User');
 
 exports.reproductiveHealth = (req,res) => {
-    let { email, sexLife, menstrualCondition , symptoms, densityOfBodyHairs, exercise, junkConsumption, smoking, drugUsage} = req.body; 
+    let { email, sexLife, symptoms, alcoholConsumption, densityOfBodyHairs, exercise, junkConsumption, smoking, drugUsage} = req.body; 
     const reproductiveHealth = {
         sexLife:sexLife,
-        menstrualCondition:menstrualCondition,
         symptoms:symptoms,
         densityOfBodyHairs:densityOfBodyHairs,
         exercise:exercise,
         junkConsumption:junkConsumption,
         smoking:smoking,
-        drugUsage:drugUsage
+        drugUsage:drugUsage,
+        alcoholConsumption: alcoholConsumption
     };
 
     User.findOneAndUpdate({ email:email },{ $set:{ reproductiveHealth:reproductiveHealth} }, { new: true })

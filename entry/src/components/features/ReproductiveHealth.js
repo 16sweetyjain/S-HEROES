@@ -57,11 +57,11 @@ export default function ReproductiveHealth() {
         const reproductiveHealthTracker = {
             email: userEmail,
             sexLife: reproductiveHealthDetails.sexLife,
-            menstrualCondition: reproductiveHealthDetails.menstrualCondition,
             symptoms: reproductiveHealthDetails.symptoms,
             densityOfBodyHairs: reproductiveHealthDetails.densityOfBodyHairs,
             exercise: reproductiveHealthDetails.exercise,
             junkConsumption: reproductiveHealthDetails.junkConsumption,
+            alcoholConsumption:reproductiveHealthDetails.alcoholConsumption,
             smoking: reproductiveHealthDetails.smoking,
             drugUsage: reproductiveHealthDetails.drugUsage
         }
@@ -129,7 +129,7 @@ export default function ReproductiveHealth() {
             />
         case 8:
             return <Card8
-                nextStep={nextStep}
+                onSubmit={onSubmit}
                 prevStep={prevStep}
                 handleChange={handleChange}
                 drugUsage={reproductiveHealthDetails.drugUsage}

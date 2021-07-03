@@ -45,9 +45,9 @@ export default function Card8(props){
     <FormControlLabel value="No" control={<Radio />} label="NO" />
   </RadioGroup>
 </FormControl>
-         <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
       </CardActions>
     </Card>
+    <Button style={{ marginTop:'50px'}} variant="contained" color="primary" onClick={props.onSubmit}>Submit</Button>
     </Grid>
             </div>
         </div>
