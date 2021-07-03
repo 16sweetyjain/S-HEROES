@@ -12,12 +12,28 @@ export default function PeriodTracker(){
 
     const userEmail = useSelector( state => state.userEmail.email);
     const [fertileDays,setDays] = useState([]);
+    const [periodTracked,setPeriodTracked]= useState(false);
     const [step,setState] = useState(1);
     const [periodDetails,setPeriodDetails] = useState({
         lastMenstrualDate:'',
         menstrualLength:'',
         menstrualCycleLength:''
     });
+
+    useEffect(() => {
+        axios.get('/getUser', {params:{email:userEmail}})
+            .then((response) => {
+                const user = response.data.result[0];
+                console.log(user);
+                if(Object.prototype.hasOwnProperty.call(user,'periodTracker')){ 
+                    setPeriodTracked(true);   
+                    setDays(user.periodTracker.expectedFertileDays);  
+                    setState(4);
+                }
+            },(error) => {
+                console.log(error);
+            });  
+    },[]);
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -33,20 +49,20 @@ export default function PeriodTracker(){
     }
 
     const onSubmit = e =>{
-      //  let lastDate = periodDetails.lastMenstrualDate.substr(periodDetails.lastMenstrualDate.length - 2) ;
+        if(!setPeriodTracked){
         let nextMenstrualExpectedDate = '';
         let expectedOvulationDate = '';    
         let fertileDaysForCalendar = [];                                                                  // will be 30 or 31
         nextMenstrualExpectedDate = moment(periodDetails.lastMenstrualDate, "YYYY-MM-DD").add(periodDetails.menstrualCycleLength, 'days').format('YYYY-MM-DD');
         expectedOvulationDate = moment(periodDetails.lastMenstrualDate, "YYYY-MM-DD").add(periodDetails.menstrualCycleLength, 'days').subtract(14, 'days').format('YYYY-MM-DD');
+
         setDays(currentArray => [...currentArray,moment(expectedOvulationDate).subtract(2, 'days').format('YYYY-MM-DD'),
         moment(expectedOvulationDate).subtract(1, 'days').format('YYYY-MM-DD'),moment(expectedOvulationDate).format('YYYY-MM-DD') ]);
-        //console.log(fertileDays)
+
         fertileDaysForCalendar.push(moment(expectedOvulationDate).subtract(2, 'days').format('YYYY-MM-DD'));
         fertileDaysForCalendar.push(moment(expectedOvulationDate).subtract(1, 'days').format('YYYY-MM-DD'));
         fertileDaysForCalendar.push(moment(expectedOvulationDate).format('YYYY-MM-DD'));
-
-       
+        
         const periodTracker = {
             email:userEmail,
             menstrualCycleLength:periodDetails.menstrualCycleLength,
@@ -64,6 +80,7 @@ export default function PeriodTracker(){
         .catch((error)=>{
             console.log(error);
         });
+    }
     };
 
     switch(step) {
