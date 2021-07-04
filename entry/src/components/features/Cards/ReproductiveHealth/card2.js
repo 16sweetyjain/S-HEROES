@@ -15,6 +15,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Slider from '@material-ui/core/Slider';
+import '../../features.css'
 
 export default function Card2(props) {
     const classes = makeStyles();
@@ -65,7 +66,7 @@ export default function Card2(props) {
                     justify="center"
                     style={{ minHeight: '100vh' }}
                 >
-                    <Card className={classes.root}>
+                    <Card className='form'>
                         <CardActionArea>
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
@@ -74,9 +75,9 @@ export default function Card2(props) {
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
+                            <i class="material-icons icon" onClick={props.prevStep}>chevron_left</i>
                             <Typography id="discrete-slider-small-steps" gutterBottom>
-                                number of times a week
+                                Weekly
                             </Typography>
                             <Slider
                                 defaultValue={0}
@@ -90,7 +91,7 @@ export default function Card2(props) {
                                 value={props.junkConsumption}
                                 onChange={props.handleChange}
                             />
-                            <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
+                            <i class="material-icons icon" onClick={props.nextStep}>chevron_right</i>
                         </CardActions>
                     </Card>
                 </Grid>

@@ -4,6 +4,11 @@
     margin-left: 20px;
     padding-top: 10px;
 }
+.card5 {
+    height: 200px;
+    width: 700px;
+    padding: 20px;
+}
 
 .heading{
     margin: 30px;
@@ -16,6 +21,13 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+.row-w {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-between;
 }
 
 .col-wrap {
@@ -49,6 +61,18 @@
 
 .text-center {
     text-align: center;
+    align-items: center;
 }
 
+.form{
+    height: 200px;
+    width: 500px;
+    padding-inline: 40px;
+}
+
+.icon {
+    size: 50px;
+    font-size: 50px;
+    cursor: pointer;
+}
 

@@ -43,9 +43,9 @@ export default function Awareness(){
             style={{ minHeight: '100vh' }}
             >
             <h4 className="heading">Frequently Asked Questions</h4>
-            <Grid item xs={10}>
+            <Grid className='row-wrap' item xs={30}>
                 {quest.map((x, index) => (
-                 <Card className="card">{x} 
+                 <Card className="card5 row-wrap">{x} 
                  <CardActionArea>
                     <CardContent>
                         <Typography gutterBottom>

@@ -14,6 +14,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import '../../features.css'
 
 export default function Card1(props){
     const classes = makeStyles();
@@ -29,7 +30,7 @@ export default function Card1(props){
     justify="center"
     style={{ minHeight: '100vh' }}
    >
-            <Card className={classes.root}>
+            <Card className='form'>
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -44,7 +45,7 @@ export default function Card1(props){
     <FormControlLabel value="No" control={<Radio />} label="NO" />
   </RadioGroup>
 </FormControl>
-         <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
+         <i class="material-icons icon" onClick={props.nextStep}>chevron_right</i>
       </CardActions>
     </Card>
     </Grid>
