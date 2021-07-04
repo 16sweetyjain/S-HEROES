@@ -1,5 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import MenstrualAnalysis from './DashboardCards/cards/MenstrualAnalysis';
+import BirthControl from './DashboardCards/cards/BirthControl';
+import ReproductiveHealth from './DashboardCards/cards/ReproductiveHealth';
+import MentalHealth from './DashboardCards/cards/MentalHealth';
+import Awareness from './DashboardCards/cards/Awareness';
+import Reports from './DashboardCards/cards/Reports';
 
 export default function Dashboard() {
 
@@ -8,24 +14,24 @@ export default function Dashboard() {
             Welcome
             <div className='row'>
                 <div className='col s4'>
-                    <Link to='/menstrualAnalysis'>Menstrual Analysis</Link>
+                    <MenstrualAnalysis/>
                 </div>
                 <div className='col s4'>
-                <Link to='/reproductiveHealth'>Reproductive Health</Link>
+                   <ReproductiveHealth/>
                 </div>
                 <div className='col s4'>
-                <Link to='/mentalHealth'>Mental Health</Link>
+                <BirthControl/>
                 </div>
                 </div>
                 <div className='row'>
                 <div className='col s4'>
-                <Link to='/birthControl'>Birth Control</Link>
+                <MentalHealth/>
                 </div>
                 <div className='col s4'>
-                <Link to='/reports'>Reports</Link>
+                <Reports/>
                 </div>
                 <div className='col s4'>
-                <Link to='/awareness'>Awareness</Link>
+                <Awareness/>
                 </div>
                 </div>
             </div>
