@@ -1,8 +1,8 @@
 .card{
-    height: 200px;
+    height: 250px;
     width: 300px;
     margin-left: 20px;
-    height: 200px;
+    padding-top: 10px;
 }
 
 .heading{

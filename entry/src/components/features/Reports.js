@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import './features.css'
 import Calendar from 'react-calendar';
 import moment from 'moment';
+import Grid from '@material-ui/core/Grid';
 
 export default function Reports(){
 
@@ -17,7 +18,8 @@ export default function Reports(){
         mental: '',
         birth: [],
         fertileDays: [],
-        periodDate: ''
+        periodDate: '',
+        menstrualCondition:[]
         
     });
 
@@ -27,7 +29,8 @@ export default function Reports(){
                 const user = response.data.result[0];
                 console.log(user.reproductiveHealth.results)
                 setUserDetails({ ...user, reproductive:user.reproductiveHealth.results, mental:user.mentalHealth.results, 
-                birth:user.birthControl.results, fertileDays:user.periodTracker.expectedFertileDays, periodDate:user.periodTracker.expectedMenstrualDate});
+                birth:user.birthControl.results, fertileDays:user.periodTracker.expectedFertileDays, periodDate:user.periodTracker.expectedMenstrualDate,
+            menstrualCondition:user.menstrualCondition.results});
                 console.log(userDetails)
             },(error) => {
                 console.log(error);
@@ -65,32 +68,33 @@ export default function Reports(){
             
             <div className='row-wrap'>
                 <div className='col s4'>
-                    <div className='card col-wrap'> 
+                    <div className='card'> 
                     <h5>Potential Disease</h5>
                         {userDetails.reproductive.map(x => (
                         <li>{x}</li>
                         ))}
+                        {userDetails.menstrualCondition.map(x => (
+                        <li>{x}</li>
+                        ))}
+                    </div>
+                </div>
+                <div className='col s4' >
+                <div className='card '> 
+                      <Circle size={150}   progressColor="#f06292" bgColor="#c5cae9" 
+                        progress={userDetails.mental * 12}/>
+                       <h6 className='text-center dark mrg40-TB'>{userDetails.mental < 6 && <div style={{ textAlign:'center'}} >Your symptoms seem normal. No need to worry. </div>}
+                    {userDetails.mental >= 6 && userDetails.mental <= 11 && <div style={{ textAlign:'center'}}>You are mildly depressed. Please visit a doctor.</div>}
+                    {userDetails.mental > 11 && <div style={{ textAlign:'center'}}>Your symptoms suggest severe depression. Please visit a doctor as soon as possible.</div>}</h6>
                     </div>
                 </div>
                 <div className='col s4'>
-                    <div className='card col-wrap'> 
-                    <h5>BirthControl Methods</h5>
+                    <div className='card'> 
+                    <h5>Birth Control Methods</h5>
                         {userDetails.birth.map(x => (
                         <li>{x}</li>
                         ))}
                     </div>
                 </div>
-            </div>
-
-            <div className='row-wrap mrg40-TB pd20-TB'>
-                <div className='col s8'>
-                    <div> <Circle size={200} progressColor="#f06292" bgColor="#c5cae9" 
-                        progress={userDetails.mental * 9}/>
-                    </div>
-                </div>
-                <h6 className='text-center dark mrg40-TB'>{userDetails.mental < 6 && <div className="card">Your symptoms seem normal. No need to worry. </div>}
-                    {userDetails.mental >= 6 && userDetails.mental <= 11 && <div className="div">You are mildly depressed. Please visit a doctor.</div>}
-                    {userDetails.mental > 11 && <div className="div">Your symptoms suggest severe depression. Please visit a doctor as soon as possible.</div>}</h6>
             </div>
         </div>
     )
