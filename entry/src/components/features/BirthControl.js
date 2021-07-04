@@ -13,7 +13,8 @@ export default function BirthControl(){
     const [birthControlDetails,setBirthControlDetails] = useState({
         important:[],
         hormonalMethod:'',
-        vaginalMethod:''
+        vaginalMethod:'',
+        results:[]
     });
 
     const handleChange = (e) => {
@@ -36,11 +37,45 @@ export default function BirthControl(){
 
     const onSubmit = e =>{
         e.preventDefault();
+        let results = [];
+
+        if(birthControlDetails.important.find(x => {
+            return (x === "Easy to use" || x === "Reduces periods") && birthControlDetails.hormonalMethod === "Yes"
+        })){
+            results.push("Birth control pill");
+        }
+
+        if(birthControlDetails.important.find(x => {
+            return (x === "Best at preventing pregnancy" || x === "Doesnt reduce sexual pleasure") && birthControlDetails.vaginalMethod === "Yes"
+        })){
+            results.push("Intrauterine device (IUD)");
+        }
+
+        if(birthControlDetails.important.find(x => {
+            return x === "Prevents STDs (sexually transmitted diseases)" || x === "Doesnt reduce sexual pleasure" || x === "Easy to use" || x === "No or few side effects"
+        })){
+            results.push("Condom");
+        }
+
+        if(birthControlDetails.important.find(x => {
+            return (x === "Cost (Inexpensive)" || x === "Easy to use" || x === "Prevents STDs (sexually transmitted diseases)") && birthControlDetails.vaginalMethod === "Yes"
+        })){
+            results.push("Cervical Cap");
+        }
+
+        if(birthControlDetails.important.find(x => {
+            return x === "Best at preventing pregnancy" && birthControlDetails.hormonalMethod === "Yes"
+        })){
+            results.push("Birth Control Shot");
+        }
+
+        setBirthControlDetails({...birthControlDetails,results:results});
         const birthControl = {
             email:userEmail,
             important:birthControlDetails.important,
             hormonalMethod:birthControlDetails.hormonalMethod,
-            vaginalMethod:birthControlDetails.vaginalMethod    
+            vaginalMethod:birthControlDetails.vaginalMethod ,
+            results:results   
         }
         axios.post('/birthControl',birthControl)
         .then((response)=>{
@@ -51,8 +86,6 @@ export default function BirthControl(){
             console.log(error);
         });
     }
-
-    console.log(birthControlDetails);
 
     switch(step) {
             case 1:
@@ -78,7 +111,7 @@ export default function BirthControl(){
                         />
             case 4:
                 return <ResultCard 
-                        birthControlDetails={birthControlDetails}/>
+                        results={birthControlDetails.results}/>
             }
         };
       

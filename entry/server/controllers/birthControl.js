@@ -1,11 +1,12 @@
 const User = require('../models/User');
 
 exports.birthControl = (req,res) => {
-    let { email, important, hormonalMethod, vaginalMethod } = req.body; 
+    let { email, important, hormonalMethod, vaginalMethod, results } = req.body; 
     const birthControl = {
         important:important,
         hormonalMethod:hormonalMethod,
-        vaginalMethod:vaginalMethod
+        vaginalMethod:vaginalMethod,
+        results:results
     };
 
     User.findOneAndUpdate({ email:email },{ $set:{ birthControl: birthControl} }, { new: true })
