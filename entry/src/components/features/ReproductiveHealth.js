@@ -9,6 +9,7 @@ import Card5 from './Cards/ReproductiveHealth/card5';
 import Card6 from './Cards/ReproductiveHealth/card6';
 import Card7 from './Cards/ReproductiveHealth/card7';
 import Card8 from './Cards/ReproductiveHealth/card8';
+import ResultCard from './Cards/ReproductiveHealth/ResultCard';
 
 export default function ReproductiveHealth() {
 
@@ -69,13 +70,12 @@ export default function ReproductiveHealth() {
         axios.post('/reproductiveHealth', reproductiveHealthTracker)
             .then((response) => {
                 console.log(response);
+                nextStep();
             })
             .catch((error) => {
                 console.log(error);
             });
     }
-
-    console.log(reproductiveHealthDetails);
 
     switch (step) {
         case 1:
@@ -134,5 +134,8 @@ export default function ReproductiveHealth() {
                 handleChange={handleChange}
                 drugUsage={reproductiveHealthDetails.drugUsage}
             />
+        case 9: 
+            return <ResultCard
+            reproductiveHealthDetails={reproductiveHealthDetails}/>
     }
 };

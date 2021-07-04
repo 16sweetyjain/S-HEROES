@@ -50,13 +50,13 @@ const MenuProps = {
 };
 
 const factors = [
-  'Fever',
-  'Chills',
-  'Rashes',
-  'Night sweats',
-  'Muscle aches',
-  'Sore throat',
-  'Fatigue'
+  'Painful and Irregular Periods',
+  'Pain with bowel movements or urination',
+  'Infertility',
+  'Chronic pelvic pain',
+  'Frequent urination',
+  'Vaginal dryness',
+  'Night Sweats'
 ];
 
 function getStyles(name, important, theme) {
