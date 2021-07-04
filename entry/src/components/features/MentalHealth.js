@@ -13,6 +13,7 @@ import Card9 from './Cards/MentalHealth/card9';
 import Card10 from './Cards/MentalHealth/card10';
 import Card11 from './Cards/MentalHealth/card11';
 import Card12 from './Cards/MentalHealth/card12';
+import ResultCard from './Cards/MentalHealth/ResultCard';
 
 
 export default function MentalHealth(){
@@ -74,6 +75,7 @@ export default function MentalHealth(){
         axios.post('/mentalHealth',mentalHealthTracker)
         .then((response)=>{
             console.log(response);
+            nextStep();
         })
         .catch((error)=>{
             console.log(error);
@@ -169,7 +171,10 @@ export default function MentalHealth(){
                                             otherProblems={mentalHealthDetails.otherProblems}
                                             onSubmit={onSubmit}
                                             />
-                                
+                                case 13:
+                                    return <ResultCard
+                                            mentalHealthDetails={mentalHealthDetails}
+                                    />
                     
                     
                     }
