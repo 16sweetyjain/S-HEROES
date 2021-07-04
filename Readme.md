@@ -45,7 +45,7 @@ npm start
 The application will run in the browser at localhost:3000
 
 **Demo gif:**<br />
-![caption]( / GIF)
+![me](https://github.com/16sweetyjain/Saheli/blob/main/Animation.gif)
 
 ## Features
 
