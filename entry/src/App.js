@@ -24,16 +24,16 @@ export default function App() {
                 <Route exact path='/' component={() => <HomePage />} />
                 <Route path='/signin' component={() => <Signin />} />
                 <Route path='/signup' component={() => <Signup />} />
-                <ProtectedRoute path='/dashboard' component={() => <Dashboard />} />
-                <ProtectedRoute path='/periodTracker' component={() => <PeriodTracker />} />
-                <ProtectedRoute path='/reproductiveHealth' component={() => <ReproductiveHealth />} />
-                <ProtectedRoute path='/mentalHealth' component={() => <MentalHealth />} />
-                <ProtectedRoute path='/birthControl' component={() => <BirthControl />} />
-                <ProtectedRoute path='/reports' component={() => <Reports />} />
-                <ProtectedRoute path='/awareness' component={() => <Awareness />} />
-                <ProtectedRoute path='/profile' component={() => <Profile />} />
-                <ProtectedRoute path='/menstrualCondition'  component={()=> <MenstrualCondition/>}/>
-                <ProtectedRoute path='/menstrualAnalysis'  component={()=> <MenstrualAnalysis/>}/>
+                <Route path='/dashboard' component={() => <Dashboard />} />
+                <Route path='/periodTracker' component={() => <PeriodTracker />} />
+                <Route path='/reproductiveHealth' component={() => <ReproductiveHealth />} />
+                <Route path='/mentalHealth' component={() => <MentalHealth />} />
+                <Route path='/birthControl' component={() => <BirthControl />} />
+                <Route path='/reports' component={() => <Reports />} />
+                <Route path='/awareness' component={() => <Awareness />} />
+                <Route path='/profile' component={() => <Profile />} />
+                <Route path='/menstrualCondition'  component={()=> <MenstrualCondition/>}/>
+                <Route path='/menstrualAnalysis'  component={()=> <MenstrualAnalysis/>}/>
             </Switch>
         </div>
     );
