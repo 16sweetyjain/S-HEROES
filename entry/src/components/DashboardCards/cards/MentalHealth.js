@@ -11,14 +11,29 @@ import {Link} from 'react-router-dom';
 import mentalHealth from '../helper_images/mentalHealth.png';
 
 const useStyles = makeStyles({
-    Card: {
-        width: 300,
-        margin: 'auto'
-      },
-      Media: {
-        height: '100%',
-        width: '100%'
-      }
+  Card: {
+    height: "250px",
+    width: 'auto',
+    paddingTop: '10px',
+    textAlign: 'center'
+  },
+  Media: {
+    height: '50%',
+    width: '50%',
+    margin: 'auto',
+    display: 'block'
+  },
+  Text: {
+    height: '30%',
+    width: '50%',
+    margin: 'auto',
+  },
+  Button: {
+    height: '10%',
+    width: '50%',
+    margin: 'auto',
+    display: 'block'
+  }
 });
 
 export default function MentalHealth() {
@@ -34,14 +49,14 @@ export default function MentalHealth() {
           image={mentalHealth}
           title="Contemplative Reptile"
         />
-        <CardContent>
+        <CardContent className={classes.Text}>
           <Typography gutterBottom variant="h5" component="h2">
             Mental Health
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button className={classes.Button} size="small" color="primary">
         <Link to='/mentalHealth'>Let's Go</Link>
         </Button>
       </CardActions>
