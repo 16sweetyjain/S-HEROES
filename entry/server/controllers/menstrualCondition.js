@@ -1,15 +1,19 @@
 const User = require('../models/User');
 
 exports.menstrualCondition = (req,res) => {
-    let { email, menstruationFlow, symptoms, mood, sex, discharge, contraceptive } = req.body; 
+    let { email, menstruationFlow, dysmenorrheaSymptoms, mood, sex,vaginalDischarge, longerThanSevenDays,tssSymptoms, amenorrheaSymptoms, menorrhagiaSymptoms, results} = req.body; 
 
     const menstrualCondition = {
         menstruationFlow:menstruationFlow,
-        symptoms:symptoms,
+        dysmenorrheaSymptoms:dysmenorrheaSymptoms,
         mood:mood,
         sex:sex,
-        discharge:discharge,
-        contraceptive:contraceptive
+        vaginalDischarge:vaginalDischarge,
+        longerThanSevenDays:longerThanSevenDays,
+        tssSymptoms:tssSymptoms,
+        amenorrheaSymptoms:amenorrheaSymptoms,
+        menorrhagiaSymptoms:menorrhagiaSymptoms,
+        results:results
     };
 
     User.findOneAndUpdate({ email:email },{ $set:{ menstrualCondition:menstrualCondition } }, { new: true })

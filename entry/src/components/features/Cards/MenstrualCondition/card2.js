@@ -49,23 +49,16 @@ const MenuProps = {
   },
 };
 
-const factors = [
-  'Muscle pain',
-  'Backache',
-  'Everything is fine',
-  'Acne',
-  'Headache',
-  'Cramps',
-  'Fatigue',
-  'Insomnia',
-  'Increased Appetite',
-  'Sensitive Breasts',
-  'Bloating',
-  'Nausea',
-  'Colic gas',
-  'Constipation',
-  'Diarrhea',
-  'Chills'
+const factors = [     // Dysmenorrhea Symptoms
+'Cramping or pain in the lower abdomen',
+' Low back pain or pain radiating down the legs',
+'Nausea',
+'Vomiting',  
+'Diarrhea',
+'Fatigue',
+'Weakness',
+'Fainting',
+'Headaches'
 ];
 
 function getStyles(name, symptoms, theme) {
@@ -96,7 +89,7 @@ export default function Card2(props) {
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Symptoms
+                 Pick all relevant options
                 </Typography>
               </CardContent>
             </CardActionArea>

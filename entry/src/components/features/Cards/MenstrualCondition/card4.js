@@ -54,7 +54,8 @@ const factors = [
   'Masturbation',
   'High sex drive',
   'Sex without protection',
-  'Sex with protection'
+  'Sex with protection',
+  'Diminished sex drive'
 ];
 
 function getStyles(name, sex, theme) {

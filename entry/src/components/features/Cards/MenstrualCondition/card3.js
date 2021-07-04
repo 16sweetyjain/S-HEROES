@@ -61,7 +61,9 @@ const factors = [
   'Panicking',
   'Inspired',
   'Melancholy',
-  'Stress'
+  'Stress',
+  'Heightened Irritability',  // Premenstrual Dysphoric Disorder (PMDD)    symptoms,
+  'Mood Swings'      // Premenstrual Dysphoric Disorder (PMDD)    symptoms,
 ];
 
 function getStyles(name, mood, theme) {

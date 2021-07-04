@@ -2,6 +2,8 @@ import React,{useState} from 'react';
 import Calendar from 'react-calendar';
 import moment from 'moment';
 import './CalendarCard.css';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 export default function CalendarCard(props){
 
@@ -16,6 +18,16 @@ export default function CalendarCard(props){
 
 
     return (
+      <div>
+
+<Grid
+    container
+    spacing={0}
+    direction="column"
+    alignItems="center"
+    justify="center"
+    style={{ minHeight: '100vh' }}
+   >
         <Calendar
     style={{ height: 500 }}
     onChange={onChange}
@@ -31,5 +43,12 @@ export default function CalendarCard(props){
     }
   >
 </Calendar>
+
+<Typography gutterBottom variant="caption" component="h4" align='center' color='primary'>
+         Dates highlighted with red color shows ovulation dates(i.e. you have high chances of getting pregnant during this time).
+          </Typography>
+          </Grid>
+          </div>
+
     )
 }

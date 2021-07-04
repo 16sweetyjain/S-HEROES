@@ -12,28 +12,12 @@ export default function PeriodTracker(){
 
     const userEmail = useSelector( state => state.userEmail.email);
     const [fertileDays,setDays] = useState([]);
-    const [periodTracked,setPeriodTracked]= useState(false);
     const [step,setState] = useState(1);
     const [periodDetails,setPeriodDetails] = useState({
         lastMenstrualDate:'',
         menstrualLength:'',
         menstrualCycleLength:''
     });
-
-    useEffect(() => {
-        axios.get('/getUser', {params:{email:userEmail}})
-            .then((response) => {
-                const user = response.data.result[0];
-                console.log(user);
-                if(Object.prototype.hasOwnProperty.call(user,'periodTracker')){ 
-                    setPeriodTracked(true);   
-                    setDays(user.periodTracker.expectedFertileDays);  
-                    setState(4);
-                }
-            },(error) => {
-                console.log(error);
-            });  
-    },[]);
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -49,7 +33,6 @@ export default function PeriodTracker(){
     }
 
     const onSubmit = e =>{
-        if(!setPeriodTracked){
         let nextMenstrualExpectedDate = '';
         let expectedOvulationDate = '';    
         let fertileDaysForCalendar = [];                                                                  // will be 30 or 31
@@ -80,7 +63,7 @@ export default function PeriodTracker(){
         .catch((error)=>{
             console.log(error);
         });
-    }
+
     };
 
     switch(step) {

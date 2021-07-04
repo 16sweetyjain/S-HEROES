@@ -9,117 +9,48 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { TextField } from '@material-ui/core';
-import clsx from 'clsx';
-import { useTheme } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
-import ListItemText from '@material-ui/core/ListItemText';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
-import Chip from '@material-ui/core/Chip';
+import FormLabel from '@material-ui/core/FormLabel';
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-    maxWidth: 300,
-  },
-  chips: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  chip: {
-    margin: 2,
-  },
-  noLabel: {
-    marginTop: theme.spacing(3),
-  },
-}));
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-const factors = [
-  'Yesterday pill',
-  'Pill Taken'
-];
-
-function getStyles(name, contraceptive, theme) {
-  return {
-    fontWeight:
-    contraceptive.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
-
-export default function Card6(props) {
-  const classes = useStyles();
-  const theme = useTheme();
-
-  return (
-    <div className='container'  >
-      <div className='row'>
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justify="center"
-          style={{ minHeight: '100vh' }}
-        >
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Oral Contraceptives
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-            <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
-              <FormControl className={classes.formControl}>
-                <InputLabel id="demo-mutiple-chip-label">Vaginal Discharge</InputLabel>
-                <Select
-                  labelId="demo-mutiple-chip-label"
-                  id="demo-mutiple-chip"
-                  multiple
-                  value={props.contraceptive}
-                  onChange={props.handleChange}
-                  input={<Input id="select-multiple-chip" />}
-                  renderValue={(selected) => (
-                    <div className={classes.chips}>
-                      {selected.map((value) => (
-                        <Chip key={value} label={value} className={classes.chip} />
-                      ))}
-                    </div>
-                  )}
-                  MenuProps={MenuProps}
-                >
-                  {factors.map((name) => (
-                    <MenuItem key={name} value={name} style={getStyles(name, props.contraceptive, theme)}>
-                      <Checkbox checked={props.contraceptive.indexOf(name) > -1} />
-                      <ListItemText primary={name} />
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </CardActions>
-          </Card>
-          <Button style={{ marginTop:'50px'}} variant="contained" color="primary" onClick={props.onSubmit}>Submit</Button>
-        </Grid>
-      </div>
-    </div>
-
-  );
+export default function Card6(props){
+    const classes = makeStyles();       // period longer than 7 days Menorrhagia Symptoms
+ 
+    return(
+        <div className='container'  >
+            <div className='row'>
+            <Grid
+    container
+    spacing={0}
+    direction="column"
+    alignItems="center"
+    justify="center"
+    style={{ minHeight: '100vh' }}
+   >
+            <Card className={classes.root}>
+      <CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+          Does your period lasts longer than 7 days?
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+      <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
+      <FormControl component="fieldset">
+  <RadioGroup row name=" longerThanSevenDays" value={props. longerThanSevenDays} onChange={props.handleChange}>
+    <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+    <FormControlLabel value="No" control={<Radio />} label="No" />
+  </RadioGroup>
+</FormControl>
+         <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
+      </CardActions>
+    </Card>
+    </Grid>
+            </div>
+        </div>
+        
+    );
 }

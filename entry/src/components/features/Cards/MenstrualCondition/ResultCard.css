@@ -1,0 +1,14 @@
+.card{
+    margin: 10px;
+    padding: 10px;
+    color: #4A148C;
+}
+
+.card:hover {
+    background: rgb(191, 191, 192);
+  }
+
+.heading{
+    margin: 20px;
+    text-align: center;
+}

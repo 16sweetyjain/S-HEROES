@@ -49,15 +49,16 @@ const MenuProps = {
   },
 };
 
-const factors = [
-  'Sticky',
-  'Spotting',         //Menorrhagia Symptoms
-  'No Discharge',
-  'Creamy',
-  'Egg-White',
-  'Watery',
-  'Atypical',
-  'Bad odor'
+const factors = [ //  menorrhagia   symptoms,
+    'Soaking 1 or more tampons or pads every hour for many consecutive hours',
+    'Doubling up on pads',
+    'Changing pads or tampons during the night',
+    'Long-lasting menstrual periods (longer than 7 days)',
+    'Blood clots the size of a quarter or larger',
+    'Bleeding that is keeping you from doing normal activities',
+    'Constant pain in lower part of stomach',
+    'Lacking energy',
+    'Shortness of breath'
 ];
 
 function getStyles(name, discharge, theme) {
@@ -69,7 +70,7 @@ function getStyles(name, discharge, theme) {
   };
 }
 
-export default function Card5(props) {
+export default function Card9(props) {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -88,19 +89,19 @@ export default function Card5(props) {
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Vaginal Discharge
+                Pick all relevant options
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
             <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
               <FormControl className={classes.formControl}>
-                <InputLabel id="demo-mutiple-chip-label">Vaginal Discharge</InputLabel>
+                <InputLabel id="demo-mutiple-chip-label">Symptoms</InputLabel>
                 <Select
                   labelId="demo-mutiple-chip-label"
                   id="demo-mutiple-chip"
                   multiple
-                  value={props.vaginalDischarge}
+                  value={props.menorrhagiaSymptoms}
                   onChange={props.handleChange}
                   input={<Input id="select-multiple-chip" />}
                   renderValue={(selected) => (
@@ -113,17 +114,16 @@ export default function Card5(props) {
                   MenuProps={MenuProps}
                 >
                   {factors.map((name) => (
-                    <MenuItem key={name} value={name} style={getStyles(name, props.vaginalDischarge, theme)}>
-                      <Checkbox checked={props.vaginalDischarge.indexOf(name) > -1} />
+                    <MenuItem key={name} value={name} style={getStyles(name, props.menorrhagiaSymptoms, theme)}>
+                      <Checkbox checked={props.menorrhagiaSymptoms.indexOf(name) > -1} />
                       <ListItemText primary={name} />
                     </MenuItem>
                   ))}
                 </Select>
               </FormControl>
-
-              <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
             </CardActions>
           </Card>
+          <Button style={{ marginTop:'50px'}} variant="contained" color="primary" onClick={props.onSubmit}>Submit</Button>
         </Grid>
       </div>
     </div>

@@ -49,15 +49,12 @@ const MenuProps = {
   },
 };
 
-const factors = [
-  'Sticky',
-  'Spotting',         //Menorrhagia Symptoms
-  'No Discharge',
-  'Creamy',
-  'Egg-White',
-  'Watery',
-  'Atypical',
-  'Bad odor'
+const factors = [ //  toxic shock syndrome symptoms,
+    'Fever',
+    'Vomiting',
+    'Diarrhea',
+    'Dizziness',
+    'Sunburn like rashes'
 ];
 
 function getStyles(name, discharge, theme) {
@@ -69,7 +66,7 @@ function getStyles(name, discharge, theme) {
   };
 }
 
-export default function Card5(props) {
+export default function Card7(props) {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -88,19 +85,19 @@ export default function Card5(props) {
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Vaginal Discharge
+                  Pick all relevant options
                 </Typography>
               </CardContent>
             </CardActionArea>
             <CardActions>
             <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
               <FormControl className={classes.formControl}>
-                <InputLabel id="demo-mutiple-chip-label">Vaginal Discharge</InputLabel>
+                <InputLabel id="demo-mutiple-chip-label">Symptoms</InputLabel>
                 <Select
                   labelId="demo-mutiple-chip-label"
                   id="demo-mutiple-chip"
                   multiple
-                  value={props.vaginalDischarge}
+                  value={props.tssSymptoms}
                   onChange={props.handleChange}
                   input={<Input id="select-multiple-chip" />}
                   renderValue={(selected) => (
@@ -113,8 +110,8 @@ export default function Card5(props) {
                   MenuProps={MenuProps}
                 >
                   {factors.map((name) => (
-                    <MenuItem key={name} value={name} style={getStyles(name, props.vaginalDischarge, theme)}>
-                      <Checkbox checked={props.vaginalDischarge.indexOf(name) > -1} />
+                    <MenuItem key={name} value={name} style={getStyles(name, props.tssSymptoms, theme)}>
+                      <Checkbox checked={props.tssSymptoms.indexOf(name) > -1} />
                       <ListItemText primary={name} />
                     </MenuItem>
                   ))}
