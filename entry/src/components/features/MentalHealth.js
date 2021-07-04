@@ -19,6 +19,7 @@ import ResultCard from './Cards/MentalHealth/ResultCard';
 export default function MentalHealth(){
 
     const userEmail = useSelector( state => state.userEmail.email);
+    const [count, setCount] = useState(0);
     const [step,setState] = useState(1);
     const [mentalHealthDetails,setMentalHealthDetails] = useState({
         aloneTime:'',
@@ -56,6 +57,12 @@ export default function MentalHealth(){
     const onSubmit = e =>{
         e.preventDefault();
 
+        for (const [key, value] of Object.entries(mentalHealthDetails)) {
+            if(value === "Yes"){
+                setCount(prevState => prevState+1);
+            }
+        }
+
         const mentalHealthTracker = {
             email:userEmail,
             aloneTime:mentalHealthDetails.aloneTime,
@@ -69,7 +76,8 @@ export default function MentalHealth(){
             socialContact:mentalHealthDetails.socialContact,
             troubleConcentrating:mentalHealthDetails.troubleConcentrating,
             troubleSleeping:mentalHealthDetails.troubleSleeping,
-            otherProblems:mentalHealthDetails.otherProblems
+            otherProblems:mentalHealthDetails.otherProblems,
+            results:mentalHealthDetails.count * 9
         }
         
         axios.post('/mentalHealth',mentalHealthTracker)
