@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Card1 from './Cards/BirthControl/card1';
 import Card2 from './Cards/BirthControl/card2';
 import Card3 from './Cards/BirthControl/card3';
+import ResultCard from './Cards/BirthControl/ResultCard'
 
 export default function BirthControl(){
 
@@ -44,6 +45,7 @@ export default function BirthControl(){
         axios.post('/birthControl',birthControl)
         .then((response)=>{
             console.log(response);
+            nextStep();
         })
         .catch((error)=>{
             console.log(error);
@@ -74,6 +76,9 @@ export default function BirthControl(){
                         onSubmit={onSubmit}
                         vaginalMethod={birthControlDetails.vaginalMethod}
                         />
+            case 4:
+                return <ResultCard 
+                        birthControlDetails={birthControlDetails}/>
             }
         };
       

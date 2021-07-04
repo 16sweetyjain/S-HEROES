@@ -52,11 +52,9 @@ const MenuProps = {
 const factors = [
   'Best at preventing pregnancy',
   'Doesnt reduce sexual pleasure',
-  'Easy to keep private',
   'Easy to use',
-  'Easy to get',
   'Reduces periods',
-  'Cost (not expensive)',
+  'Cost (Inexpensive)',
   'Has health benefits',
   'No or few side effects',
   'Prevents STDs (sexually transmitted diseases)'
