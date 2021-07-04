@@ -19,7 +19,7 @@ import MenstrualAnalysis from './components/features/MenstrualAnalysis';
 export default function App() {
 
     return (
-        <div>
+        <div className="container">
             <Switch>
                 <Route exact path='/' component={() => <HomePage />} />
                 <Route path='/signin' component={() => <Signin />} />
