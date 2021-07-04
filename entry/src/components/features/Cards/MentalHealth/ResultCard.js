@@ -7,16 +7,6 @@ import Circle from 'react-circle';
 
 export default function ResultCard(props){
 
-    const [count, setCount] = useState(0);
-    console.log(props.mentalHealthDetails)
-    useEffect(() => {
-        for (const [key, value] of Object.entries(props.mentalHealthDetails)) {
-            if(value === "Yes"){
-                setCount(prevState => prevState+1);
-            }
-        }
-    }, []);
-
     return (
 
         <Grid
@@ -30,10 +20,10 @@ export default function ResultCard(props){
             <h4 className="heading">Your Depression Score is:</h4>
             <Grid item xs={3}>
             <Circle size={300} progressColor="#f06292" bgColor="#c5cae9" 
-            progress={count * 9}/>
-            {count < 5 && <Card className="card">Your symptoms seem normal. No need to worry. </Card>}
-            {count >= 5 && count <= 8 && <Card className="card">You are mildly depressed. Please visit a doctor.</Card>}
-            {count > 8 && <Card className="card">Your symptoms suggest severe depression. Please visit a doctor as soon as possible.</Card>} 
+            progress={props.count * 12}/>
+            {props.count < 6 && <Card className="card">Your symptoms seem normal. No need to worry. </Card>}
+            {props.count >= 6 && props.count <= 11 && <Card className="card">You are mildly depressed. Please visit a doctor.</Card>}
+            {props.count > 11 && <Card className="card">Your symptoms suggest severe depression. Please visit a doctor as soon as possible.</Card>} 
             </Grid>  
         </Grid> 
     )

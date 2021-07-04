@@ -19,7 +19,6 @@ import ResultCard from './Cards/MentalHealth/ResultCard';
 export default function MentalHealth(){
 
     const userEmail = useSelector( state => state.userEmail.email);
-    const [count, setCount] = useState(0);
     const [step,setState] = useState(1);
     const [mentalHealthDetails,setMentalHealthDetails] = useState({
         aloneTime:'',
@@ -33,7 +32,8 @@ export default function MentalHealth(){
         socialContact:'',
         troubleConcentrating:'',
         troubleSleeping:'',
-        otherProblems:''
+        otherProblems:'',
+        count:0
     });
 
     const handleChangeProblems = (e)=>{
@@ -56,12 +56,17 @@ export default function MentalHealth(){
 
     const onSubmit = e =>{
         e.preventDefault();
-
+         let count =0;
         for (const [key, value] of Object.entries(mentalHealthDetails)) {
             if(value === "Yes"){
-                setCount(prevState => prevState+1);
+                count++;
             }
         }
+        if(mentalHealthDetails.otherProblems.length != 0){
+            count++;
+        }
+        
+        setMentalHealthDetails({...mentalHealthDetails,count:count});
 
         const mentalHealthTracker = {
             email:userEmail,
@@ -77,7 +82,7 @@ export default function MentalHealth(){
             troubleConcentrating:mentalHealthDetails.troubleConcentrating,
             troubleSleeping:mentalHealthDetails.troubleSleeping,
             otherProblems:mentalHealthDetails.otherProblems,
-            results:mentalHealthDetails.count * 9
+            results:count
         }
         
         axios.post('/mentalHealth',mentalHealthTracker)
@@ -181,7 +186,7 @@ export default function MentalHealth(){
                                             />
                                 case 13:
                                     return <ResultCard
-                                            mentalHealthDetails={mentalHealthDetails}
+                                            count={mentalHealthDetails.count}
                                     />
                     
                     
