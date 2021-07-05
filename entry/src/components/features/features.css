@@ -1,12 +1,54 @@
 .card{
-    margin: 20px;
-    padding: 10px;
-    font-size: large;
-    font-weight: 500;
-
+    height: 200px;
+    width: 300px;
+    margin-left: 20px;
+    height: 200px;
 }
 
 .heading{
     margin: 30px;
     color: black;
 }
+
+.row-wrap {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.col-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.details {
+    margin: 20px;
+}
+
+.dark {
+    color: rgb(129, 27, 87);
+    font-weight: 500;
+}
+
+.black {
+    color: cadetblue;
+}
+
+.mrg40-TB {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.pd20-TB {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
