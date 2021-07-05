@@ -23,7 +23,8 @@ export default function ReproductiveHealth() {
         junkConsumption: '',
         alcoholConsumption: '',
         smoking: '',
-        drugUsage: ''
+        drugUsage: '',
+        results:[]
     });
 
 
@@ -46,14 +47,62 @@ export default function ReproductiveHealth() {
         setState(prevState => prevState + 1);
     }
 
-
-
     const prevStep = () => {
         setState(prevState => prevState - 1);
     }
 
     const onSubmit = e => {
         e.preventDefault();
+        let results = [];
+
+        if(reproductiveHealthDetails.sexLife === 'painful' || 
+        (reproductiveHealthDetails.sexLife === 'lack of interest') ||
+        (reproductiveHealthDetails.sexLife === 'unsatisfying sex')){
+            results.push("Female Sexual Dysfunction ");
+        }
+        if((reproductiveHealthDetails.junkConsumption >= 5 ||
+            reproductiveHealthDetails.alcoholConsumption >= 4) &&
+            (reproductiveHealthDetails.drugUsage === "Yes" ||
+            reproductiveHealthDetails.smoking === "Yes")){
+                results.push("Female Infertility");
+        }
+        if(reproductiveHealthDetails.densityOfBodyHairs === 'excess'){
+            results.push("Polycystic Ovary Syndrome(PCOS)");
+        }
+        const endo = reproductiveHealthDetails.symptoms.filter(x => {
+            return (
+                x === "Painful and Irregular Periods" || 
+                x === "Pain with bowel movements or urination" ||
+                x === "Infertility"
+              )
+            
+        })
+        if(endo.length > 1){
+            results.push("Endometriosis");
+        }
+        const poi = reproductiveHealthDetails.symptoms.filter(x => {
+            return (
+                x === "Painful and Irregular Periods" || 
+                x === "Vaginal dryness" ||
+                x === "Infertility" || 
+                x === "Night Sweats"
+              )
+            
+        })
+        if(poi.length > 2 || (poi.length > 1 && reproductiveHealthDetails.sexLife === 'lack of interest')){
+            results.push("Primary ovarian insufficiency(POI)");
+        }
+
+        if(reproductiveHealthDetails.symptoms.find(x => {
+            return (
+                x === "Chronic pelvic pain" || 
+                x === "Frequent urination"
+              )
+            
+        }) && reproductiveHealthDetails.sexLife === 'painful'){
+            results.push("Interstitial cystitis(IC)");
+        }
+        setReproductiveHealthDetails({ ...reproductiveHealthDetails, results: results });
 
         const reproductiveHealthTracker = {
             email: userEmail,
@@ -64,7 +113,8 @@ export default function ReproductiveHealth() {
             junkConsumption: reproductiveHealthDetails.junkConsumption,
             alcoholConsumption:reproductiveHealthDetails.alcoholConsumption,
             smoking: reproductiveHealthDetails.smoking,
-            drugUsage: reproductiveHealthDetails.drugUsage
+            drugUsage: reproductiveHealthDetails.drugUsage,
+            results:results
         }
 
         axios.post('/reproductiveHealth', reproductiveHealthTracker)
@@ -136,6 +186,6 @@ export default function ReproductiveHealth() {
             />
         case 9: 
             return <ResultCard
-            reproductiveHealthDetails={reproductiveHealthDetails}/>
+            results={reproductiveHealthDetails.results}/>
     }
 };

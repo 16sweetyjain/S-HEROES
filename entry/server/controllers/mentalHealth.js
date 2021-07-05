@@ -1,7 +1,7 @@
 const User = require('../models/User');
 
 exports.mentalHealth = (req,res) => {
-    let { email, aloneTime, tired, fidgety, aches, easyDistraction, overthinking, sadness, angry, socialContact, troubleConcentrating, troubleSleeping, otherProblems  } = req.body; 
+    let { email, aloneTime, tired, fidgety, aches, easyDistraction, overthinking, sadness, angry, socialContact, troubleConcentrating, troubleSleeping, otherProblems, results  } = req.body; 
     const mentalHealth = {
         aloneTime:aloneTime,
         tired:tired,
@@ -14,7 +14,8 @@ exports.mentalHealth = (req,res) => {
         socialContact:socialContact,
         troubleConcentrating:troubleConcentrating,
         troubleSleeping:troubleSleeping,
-        otherProblems:otherProblems
+        otherProblems:otherProblems,
+        results:results
     };
 
     User.findOneAndUpdate({ email:email },{ $set:{ mentalHealth:mentalHealth } }, { new: true })

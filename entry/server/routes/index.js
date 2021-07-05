@@ -20,6 +20,4 @@ router.post('/profile',profile);
 router.post('/menstrualCondition',menstrualCondition);
 router.get('/getUser',getUser);
 
-
-
 module.exports = router;
