@@ -23,6 +23,13 @@
     justify-content: space-evenly;
 }
 
+.row-w {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+}
+
 .col-wrap {
     display: flex;
     flex-direction: column;
