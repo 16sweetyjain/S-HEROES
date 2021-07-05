@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import {TextField} from '@material-ui/core';
+import '../../features.css'
 
 export default function card1(props){
     const classes = makeStyles();
@@ -26,7 +27,7 @@ export default function card1(props){
     justify="center"
     style={{ minHeight: '100vh' }}
    >
-            <Card className={classes.root}>
+            <Card className='form'>
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -44,7 +45,7 @@ export default function card1(props){
     onChange={props.handleChange}
   />
 
-         <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
+         <i class="material-icons icon" onClick={props.nextStep}>chevron_right</i>
       </CardActions>
     </Card>
     </Grid>

@@ -19,6 +19,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 import Chip from '@material-ui/core/Chip';
+import '../../features.css'
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -83,7 +84,7 @@ export default function Card3(props) {
           justify="center"
           style={{ minHeight: '100vh' }}
         >
-          <Card className={classes.root}>
+          <Card className='form'>
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
@@ -92,9 +93,9 @@ export default function Card3(props) {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
+              <i class="material-icons icon" onClick={props.prevStep}>chevron_left</i>
               <FormControl className={classes.formControl}>
-                <InputLabel id="demo-mutiple-chip-label">Selected options</InputLabel>
+                <InputLabel id="demo-mutiple-chip-label">Select options</InputLabel>
                 <Select
                   labelId="demo-mutiple-chip-label"
                   id="demo-mutiple-chip"
@@ -120,7 +121,7 @@ export default function Card3(props) {
                 </Select>
               </FormControl>
 
-              <i class="material-icons" onClick={props.nextStep}>chevron_right</i>
+              <i class="material-icons icon" onClick={props.nextStep}>chevron_right</i>
             </CardActions>
           </Card>
         </Grid>

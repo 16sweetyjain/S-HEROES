@@ -4,6 +4,11 @@
     margin-left: 20px;
     height: 200px;
 }
+.card5 {
+    height: 200px;
+    width: 700px;
+    padding: 20px;
+}
 
 .heading{
     margin: 30px;
@@ -49,6 +54,18 @@
 
 .text-center {
     text-align: center;
+    align-items: center;
 }
 
+.form{
+    height: 200px;
+    width: 500px;
+    padding-inline: 40px;
+}
+
+.icon {
+    size: 50px;
+    font-size: 50px;
+    cursor: pointer;
+}
 
