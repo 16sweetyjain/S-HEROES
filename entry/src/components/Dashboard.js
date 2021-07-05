@@ -6,12 +6,24 @@ import ReproductiveHealth from './DashboardCards/cards/ReproductiveHealth';
 import MentalHealth from './DashboardCards/cards/MentalHealth';
 import Awareness from './DashboardCards/cards/Awareness';
 import Reports from './DashboardCards/cards/Reports';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    Heading: {
+      fontSize: '40px',
+      textAlign: 'center',
+      margin: '20px'
+    }
+  });
 
 export default function Dashboard() {
-
+    const classes = useStyles();
     return (
-        <div className = 'container'>
-            Welcome
+        <div className='container'>
+            <div className={classes.Heading}>
+                Welcome
+            </div>
+            
             <div className='row'>
                 <div className='col s4'>
                     <MenstrualAnalysis/>

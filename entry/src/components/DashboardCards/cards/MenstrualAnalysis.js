@@ -12,12 +12,27 @@ import menstrualAnalysis from '../helper_images/menstrualAnalysis.jpg';
 
 const useStyles = makeStyles({
   Card: {
-    width: 300,
-    margin: 'auto'
+    height: "250px",
+    width: 'auto',
+    paddingTop: '10px',
+    textAlign: 'center'
   },
   Media: {
-    height: '100%',
-    width: '100%'
+    height: '50%',
+    width: '50%',
+    margin: 'auto',
+    display: 'block'
+  },
+  Text: {
+    height: '30%',
+    width: '50%',
+    margin: 'auto',
+  },
+  Button: {
+    height: '10%',
+    width: '50%',
+    margin: 'auto',
+    display: 'block'
   }
 });
 
@@ -34,14 +49,14 @@ export default function MenstrualAnalysis() {
           image={menstrualAnalysis}
           title="Contemplative Reptile"
         />
-        <CardContent>
+        <CardContent >
           <Typography gutterBottom variant="h5" component="h2">
             Menstrual Analysis
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button className={classes.Button} size="small" color="primary">
         <Link to='/menstrualAnalysis'>Let's Go</Link>
         </Button>
       </CardActions>
