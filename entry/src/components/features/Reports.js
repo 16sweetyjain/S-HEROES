@@ -67,7 +67,7 @@ export default function Reports(){
             </div>
             
             <div className='row-wrap'>
-                <div className='col s4'>
+                <div >
                     <div className='card'> 
                     <h5>Potential Disease</h5>
                         {userDetails.reproductive.map(x => (
@@ -78,7 +78,7 @@ export default function Reports(){
                         ))}
                     </div>
                 </div>
-                <div className='col s4' >
+                <div  >
                 <div className='card '> 
                       <Circle size={150}   progressColor="#f06292" bgColor="#c5cae9" 
                         progress={userDetails.mental * 12}/>
@@ -87,7 +87,7 @@ export default function Reports(){
                     {userDetails.mental > 11 && <div style={{ textAlign:'center'}}>Your symptoms suggest severe depression. Please visit a doctor as soon as possible.</div>}</h6>
                     </div>
                 </div>
-                <div className='col s4'>
+                <div >
                     <div className='card'> 
                     <h5>Birth Control Methods</h5>
                         {userDetails.birth.map(x => (
