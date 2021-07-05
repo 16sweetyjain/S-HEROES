@@ -21,9 +21,9 @@ export default function ResultCard(props){
             <Grid item xs={3}>
             <Circle size={300} progressColor="#f06292" bgColor="#c5cae9" 
             progress={props.count * 12}/>
-            {props.count < 6 && <Card className="card">Your symptoms seem normal. No need to worry. </Card>}
-            {props.count >= 6 && props.count <= 11 && <Card className="card">You are mildly depressed. Please visit a doctor.</Card>}
-            {props.count > 11 && <Card className="card">Your symptoms suggest severe depression. Please visit a doctor as soon as possible.</Card>} 
+            {props.count < 6 && <Card className="card3">Your symptoms seem normal. No need to worry. </Card>}
+            {props.count >= 6 && props.count <= 11 && <Card className="card3">You are mildly depressed. Please visit a doctor.</Card>}
+            {props.count > 11 && <Card className="card3">Your symptoms suggest severe depression. Please visit a doctor as soon as possible.</Card>} 
             </Grid>  
         </Grid> 
     )

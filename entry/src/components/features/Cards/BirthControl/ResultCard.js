@@ -17,7 +17,7 @@ export default function ResultCard(props){
             <h4 className="heading">Best Suited Methods For You:</h4>
             <Grid item xs={3}>
                 {props.results.map(x => (
-                 <Card className="card">{x}</Card>
+                 <Card className="card4">{x}</Card>
                 ))}
             </Grid> 
         </Grid> 

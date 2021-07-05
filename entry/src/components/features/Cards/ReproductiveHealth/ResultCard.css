@@ -1,10 +1,10 @@
-.card{
+.card2{
     margin: 10px;
     padding: 10px;
     color: #4A148C;
 }
 
-.card:hover {
+.card2:hover {
     background: rgb(191, 191, 192);
   }
 

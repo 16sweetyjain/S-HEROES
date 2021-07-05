@@ -17,7 +17,7 @@ export default function ResultCard(props){
             <h4 className="heading">Based on quiz, possible disorders are:</h4>
             <Grid item xs={3}>
                 {props.results.map(x => (
-                 <Card className="card">{x}</Card>
+                 <Card className="card2">{x}</Card>
                 ))}
             </Grid>   
 

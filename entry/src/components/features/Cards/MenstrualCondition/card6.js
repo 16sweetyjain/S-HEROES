@@ -40,7 +40,7 @@ export default function Card6(props){
       <CardActions>
       <i class="material-icons" onClick={props.prevStep}>chevron_left</i>
       <FormControl component="fieldset">
-  <RadioGroup row name=" longerThanSevenDays" value={props. longerThanSevenDays} onChange={props.handleChange}>
+  <RadioGroup row name="longerThanSevenDays" value={props. longerThanSevenDays} onChange={props.handleChange}>
     <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
     <FormControlLabel value="No" control={<Radio />} label="No" />
   </RadioGroup>
